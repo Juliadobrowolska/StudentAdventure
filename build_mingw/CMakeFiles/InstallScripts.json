@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"C:/StudentAdventure/build_mingw/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

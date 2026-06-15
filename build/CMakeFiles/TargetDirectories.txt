@@ -1,0 +1,3 @@
+C:/StudentAdventure/build/CMakeFiles/game.dir
+C:/StudentAdventure/build/CMakeFiles/edit_cache.dir
+C:/StudentAdventure/build/CMakeFiles/rebuild_cache.dir
