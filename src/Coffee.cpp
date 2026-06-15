@@ -1,42 +1,21 @@
-#include "Coffee.h"
+#include "../include/Coffee.h"
 
-#include <cmath>
-
-Coffee::Coffee(float x,float y)
-{
-    position = {x,y};
-
-    cup.setRadius(18.f);
-
-    cup.setFillColor(sf::Color(120,70,20));
+// Implementacja konstruktora inicjalizująca geometrię obiektu
+Coffee::Coffee(float x, float y) {
+    position = {x, y};
+    shape.setSize({30.f, 30.f});
+    shape.setFillColor(sf::Color(165, 42, 42)); // Kodowanie koloru kawy
+    shape.setPosition(position);
 }
 
-void Coffee::update(float deltaTime)
-{
-    animationTime += deltaTime;
-
-    float scale =
-        1.f + std::sin(animationTime * 5.f) * 0.1f;
-
-    cup.setScale({scale,scale});
+void Coffee::update(float deltaTime) {
+    // Obiekt Coffee jest statyczny; brak logiki aktualizacji
 }
 
-void Coffee::draw(sf::RenderWindow& window)
-{
-    if(!collected)
-    {
-        cup.setPosition(position);
-
-        window.draw(cup);
-    }
+void Coffee::draw(sf::RenderWindow& window) {
+    window.draw(shape);
 }
 
-sf::FloatRect Coffee::getBounds() const
-{
-    return cup.getGlobalBounds();
-}
-
-void Coffee::collect()
-{
-    collected = true;
+sf::FloatRect Coffee::getBounds() const {
+    return shape.getGlobalBounds();
 }

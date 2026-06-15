@@ -318,7 +318,6 @@ CMakeFiles/game.dir/src/Character.cpp.obj: C:/StudentAdventure/src/Character.cpp
 
 CMakeFiles/game.dir/src/Coffee.cpp.obj: C:/StudentAdventure/src/Coffee.cpp \
   C:/StudentAdventure/include/Coffee.h \
-  C:/StudentAdventure/include/Collectible.h \
   C:/StudentAdventure/include/GameObject.h \
   C:/msys64/ucrt64/include/SFML/Config.hpp \
   C:/msys64/ucrt64/include/SFML/Graphics.hpp \
@@ -484,7 +483,6 @@ CMakeFiles/game.dir/src/Coffee.cpp.obj: C:/StudentAdventure/src/Coffee.cpp \
   C:/msys64/ucrt64/include/c++/15.2.0/bits/shared_ptr.h \
   C:/msys64/ucrt64/include/c++/15.2.0/bits/shared_ptr_atomic.h \
   C:/msys64/ucrt64/include/c++/15.2.0/bits/shared_ptr_base.h \
-  C:/msys64/ucrt64/include/c++/15.2.0/bits/specfun.h \
   C:/msys64/ucrt64/include/c++/15.2.0/bits/sstream.tcc \
   C:/msys64/ucrt64/include/c++/15.2.0/bits/std_abs.h \
   C:/msys64/ucrt64/include/c++/15.2.0/bits/std_mutex.h \
@@ -524,7 +522,6 @@ CMakeFiles/game.dir/src/Coffee.cpp.obj: C:/StudentAdventure/src/Coffee.cpp \
   C:/msys64/ucrt64/include/c++/15.2.0/charconv \
   C:/msys64/ucrt64/include/c++/15.2.0/chrono \
   C:/msys64/ucrt64/include/c++/15.2.0/clocale \
-  C:/msys64/ucrt64/include/c++/15.2.0/cmath \
   C:/msys64/ucrt64/include/c++/15.2.0/codecvt \
   C:/msys64/ucrt64/include/c++/15.2.0/compare \
   C:/msys64/ucrt64/include/c++/15.2.0/concepts \
@@ -572,18 +569,6 @@ CMakeFiles/game.dir/src/Coffee.cpp.obj: C:/StudentAdventure/src/Coffee.cpp \
   C:/msys64/ucrt64/include/c++/15.2.0/string \
   C:/msys64/ucrt64/include/c++/15.2.0/string_view \
   C:/msys64/ucrt64/include/c++/15.2.0/system_error \
-  C:/msys64/ucrt64/include/c++/15.2.0/tr1/bessel_function.tcc \
-  C:/msys64/ucrt64/include/c++/15.2.0/tr1/beta_function.tcc \
-  C:/msys64/ucrt64/include/c++/15.2.0/tr1/ell_integral.tcc \
-  C:/msys64/ucrt64/include/c++/15.2.0/tr1/exp_integral.tcc \
-  C:/msys64/ucrt64/include/c++/15.2.0/tr1/gamma.tcc \
-  C:/msys64/ucrt64/include/c++/15.2.0/tr1/hypergeometric.tcc \
-  C:/msys64/ucrt64/include/c++/15.2.0/tr1/legendre_function.tcc \
-  C:/msys64/ucrt64/include/c++/15.2.0/tr1/modified_bessel_func.tcc \
-  C:/msys64/ucrt64/include/c++/15.2.0/tr1/poly_hermite.tcc \
-  C:/msys64/ucrt64/include/c++/15.2.0/tr1/poly_laguerre.tcc \
-  C:/msys64/ucrt64/include/c++/15.2.0/tr1/riemann_zeta.tcc \
-  C:/msys64/ucrt64/include/c++/15.2.0/tr1/special_function_util.h \
   C:/msys64/ucrt64/include/c++/15.2.0/tuple \
   C:/msys64/ucrt64/include/c++/15.2.0/type_traits \
   C:/msys64/ucrt64/include/c++/15.2.0/typeinfo \
@@ -616,7 +601,6 @@ CMakeFiles/game.dir/src/Coffee.cpp.obj: C:/StudentAdventure/src/Coffee.cpp \
   C:/msys64/ucrt64/include/limits.h \
   C:/msys64/ucrt64/include/locale.h \
   C:/msys64/ucrt64/include/malloc.h \
-  C:/msys64/ucrt64/include/math.h \
   C:/msys64/ucrt64/include/process.h \
   C:/msys64/ucrt64/include/pthread.h \
   C:/msys64/ucrt64/include/pthread_compat.h \
@@ -982,11 +966,12 @@ CMakeFiles/game.dir/src/Game.cpp.obj: C:/StudentAdventure/src/Game.cpp \
   C:/StudentAdventure/include/Character.h \
   C:/StudentAdventure/include/Coffee.h \
   C:/StudentAdventure/include/Collectible.h \
-  C:/StudentAdventure/include/Enemy.h \
+  C:/StudentAdventure/include/ECTS.h \
   C:/StudentAdventure/include/Game.h \
   C:/StudentAdventure/include/GameObject.h \
   C:/StudentAdventure/include/Lecturer.h \
   C:/StudentAdventure/include/Platform.h \
+  C:/StudentAdventure/include/Projectile.h \
   C:/StudentAdventure/include/Student.h \
   C:/msys64/ucrt64/include/SFML/Config.hpp \
   C:/msys64/ucrt64/include/SFML/Graphics.hpp \
@@ -1217,7 +1202,6 @@ CMakeFiles/game.dir/src/Game.cpp.obj: C:/StudentAdventure/src/Game.cpp \
   C:/msys64/ucrt64/include/c++/15.2.0/iomanip \
   C:/msys64/ucrt64/include/c++/15.2.0/ios \
   C:/msys64/ucrt64/include/c++/15.2.0/iosfwd \
-  C:/msys64/ucrt64/include/c++/15.2.0/iostream \
   C:/msys64/ucrt64/include/c++/15.2.0/istream \
   C:/msys64/ucrt64/include/c++/15.2.0/iterator \
   C:/msys64/ucrt64/include/c++/15.2.0/limits \
@@ -1302,8 +1286,6 @@ CMakeFiles/game.dir/src/Game.cpp.obj: C:/StudentAdventure/src/Game.cpp \
   C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/syslimits.h
 
 CMakeFiles/game.dir/src/Lecturer.cpp.obj: C:/StudentAdventure/src/Lecturer.cpp \
-  C:/StudentAdventure/include/Character.h \
-  C:/StudentAdventure/include/Enemy.h \
   C:/StudentAdventure/include/GameObject.h \
   C:/StudentAdventure/include/Lecturer.h \
   C:/msys64/ucrt64/include/SFML/Config.hpp \
@@ -2253,7 +2235,7 @@ CMakeFiles/game.dir/src/main.cpp.obj: C:/StudentAdventure/src/main.cpp \
   C:/StudentAdventure/include/Character.h \
   C:/StudentAdventure/include/Coffee.h \
   C:/StudentAdventure/include/Collectible.h \
-  C:/StudentAdventure/include/Enemy.h \
+  C:/StudentAdventure/include/ECTS.h \
   C:/StudentAdventure/include/Game.h \
   C:/StudentAdventure/include/GameObject.h \
   C:/StudentAdventure/include/Lecturer.h \
@@ -3032,6 +3014,8 @@ C:/msys64/ucrt64/include/c++/15.2.0/bits/stl_uninitialized.h:
 
 C:/msys64/ucrt64/include/c++/15.2.0/bits/streambuf_iterator.h:
 
+C:/StudentAdventure/include/Projectile.h:
+
 C:/msys64/ucrt64/include/c++/15.2.0/bits/string_view.tcc:
 
 C:/msys64/ucrt64/include/c++/15.2.0/bits/stringfwd.h:
@@ -3232,7 +3216,11 @@ C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stdint.h:
 
 C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/syslimits.h:
 
+C:/StudentAdventure/src/ECTS.cpp:
+
 C:/StudentAdventure/include/Collectible.h:
+
+C:/StudentAdventure/include/ECTS.h:
 
 C:/msys64/ucrt64/include/c++/15.2.0/tr1/hypergeometric.tcc:
 
@@ -3244,19 +3232,11 @@ C:/msys64/ucrt64/include/c++/15.2.0/tr1/riemann_zeta.tcc:
 
 C:/msys64/ucrt64/include/math.h:
 
-C:/StudentAdventure/src/ECTS.cpp:
-
-C:/StudentAdventure/include/ECTS.h:
-
 C:/StudentAdventure/src/Game.cpp:
-
-C:/StudentAdventure/include/Enemy.h:
 
 C:/StudentAdventure/include/Game.h:
 
 C:/StudentAdventure/include/Student.h:
-
-C:/msys64/ucrt64/include/c++/15.2.0/iostream:
 
 C:/StudentAdventure/src/Lecturer.cpp:
 

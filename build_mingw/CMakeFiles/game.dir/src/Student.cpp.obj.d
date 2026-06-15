@@ -1,8 +1,6 @@
 CMakeFiles/game.dir/src/Student.cpp.obj: \
  C:\StudentAdventure\src\Student.cpp \
  C:/StudentAdventure/include/Student.h \
- C:/StudentAdventure/include/Character.h \
- C:/StudentAdventure/include/GameObject.h \
  C:/msys64/ucrt64/include/SFML/Graphics.hpp \
  C:/msys64/ucrt64/include/SFML/Graphics/BlendMode.hpp \
  C:/msys64/ucrt64/include/SFML/Graphics/Export.hpp \
@@ -308,4 +306,6 @@ CMakeFiles/game.dir/src/Student.cpp.obj: \
  C:/msys64/ucrt64/include/SFML/System/FileInputStream.hpp \
  C:/msys64/ucrt64/include/SFML/System/InputStream.hpp \
  C:/msys64/ucrt64/include/SFML/System/MemoryInputStream.hpp \
- C:/msys64/ucrt64/include/SFML/System/Sleep.hpp
+ C:/msys64/ucrt64/include/SFML/System/Sleep.hpp \
+ C:/StudentAdventure/include/Character.h \
+ C:/StudentAdventure/include/GameObject.h

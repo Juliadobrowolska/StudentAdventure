@@ -306,9 +306,11 @@ CMakeFiles/game.dir/src/Game.cpp.obj: C:\StudentAdventure\src\Game.cpp \
  C:/msys64/ucrt64/include/SFML/System/InputStream.hpp \
  C:/msys64/ucrt64/include/SFML/System/MemoryInputStream.hpp \
  C:/msys64/ucrt64/include/SFML/System/Sleep.hpp \
- C:/StudentAdventure/include/GameObject.h \
  C:/StudentAdventure/include/Student.h \
  C:/StudentAdventure/include/Character.h \
- C:/StudentAdventure/include/Enemy.h \
+ C:/StudentAdventure/include/GameObject.h \
+ C:/StudentAdventure/include/Platform.h \
+ C:/StudentAdventure/include/Coffee.h C:/StudentAdventure/include/ECTS.h \
  C:/StudentAdventure/include/Collectible.h \
- C:/msys64/ucrt64/include/c++/15.2.0/iostream
+ C:/StudentAdventure/include/Lecturer.h \
+ C:/StudentAdventure/include/Projectile.h

@@ -310,7 +310,6 @@ CMakeFiles/game.dir/src/main.cpp.obj: C:\StudentAdventure\src\main.cpp \
  C:/StudentAdventure/include/Character.h \
  C:/StudentAdventure/include/GameObject.h \
  C:/StudentAdventure/include/Platform.h \
- C:/StudentAdventure/include/Coffee.h \
+ C:/StudentAdventure/include/Coffee.h C:/StudentAdventure/include/ECTS.h \
  C:/StudentAdventure/include/Collectible.h \
- C:/StudentAdventure/include/Lecturer.h \
- C:/StudentAdventure/include/Enemy.h
+ C:/StudentAdventure/include/Lecturer.h

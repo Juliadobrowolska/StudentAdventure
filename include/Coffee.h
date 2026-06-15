@@ -1,24 +1,16 @@
 #pragma once
+#include "GameObject.h"
 
-#include "Collectible.h"
-
-class Coffee : public Collectible
-{
+class Coffee : public GameObject {
 public:
+    // Constructor sets the position
+    Coffee(float x, float y);
 
-    Coffee(float x,float y);
-
+    // Overridden virtual methods
     void update(float deltaTime) override;
-
     void draw(sf::RenderWindow& window) override;
-
     sf::FloatRect getBounds() const override;
 
-    void collect() override;
-
 private:
-
-    sf::CircleShape cup;
-
-    float animationTime = 0.f;
+    sf::RectangleShape shape;
 };

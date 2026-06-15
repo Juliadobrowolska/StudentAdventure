@@ -980,14 +980,10 @@ CMakeFiles/game.dir/src/ECTS.cpp.obj: C:/StudentAdventure/src/ECTS.cpp \
 
 CMakeFiles/game.dir/src/Game.cpp.obj: C:/StudentAdventure/src/Game.cpp \
   C:/StudentAdventure/include/Character.h \
-  C:/StudentAdventure/include/Coffee.h \
   C:/StudentAdventure/include/Collectible.h \
-  C:/StudentAdventure/include/ECTS.h \
   C:/StudentAdventure/include/Enemy.h \
   C:/StudentAdventure/include/Game.h \
   C:/StudentAdventure/include/GameObject.h \
-  C:/StudentAdventure/include/Lecturer.h \
-  C:/StudentAdventure/include/Platform.h \
   C:/StudentAdventure/include/Student.h \
   C:/msys64/ucrt64/include/SFML/Config.hpp \
   C:/msys64/ucrt64/include/SFML/Graphics.hpp \
@@ -1218,6 +1214,7 @@ CMakeFiles/game.dir/src/Game.cpp.obj: C:/StudentAdventure/src/Game.cpp \
   C:/msys64/ucrt64/include/c++/15.2.0/iomanip \
   C:/msys64/ucrt64/include/c++/15.2.0/ios \
   C:/msys64/ucrt64/include/c++/15.2.0/iosfwd \
+  C:/msys64/ucrt64/include/c++/15.2.0/iostream \
   C:/msys64/ucrt64/include/c++/15.2.0/istream \
   C:/msys64/ucrt64/include/c++/15.2.0/iterator \
   C:/msys64/ucrt64/include/c++/15.2.0/limits \
@@ -2251,10 +2248,14 @@ CMakeFiles/game.dir/src/Student.cpp.obj: C:/StudentAdventure/src/Student.cpp \
 
 CMakeFiles/game.dir/src/main.cpp.obj: C:/StudentAdventure/src/main.cpp \
   C:/StudentAdventure/include/Character.h \
+  C:/StudentAdventure/include/Coffee.h \
   C:/StudentAdventure/include/Collectible.h \
-  C:/StudentAdventure/include/Enemy.h \
+  C:/StudentAdventure/include/ECTS.h \
   C:/StudentAdventure/include/Game.h \
   C:/StudentAdventure/include/GameObject.h \
+  C:/StudentAdventure/include/Lecturer.h \
+  C:/StudentAdventure/include/Platform.h \
+  C:/StudentAdventure/include/Projectile.h \
   C:/StudentAdventure/include/Student.h \
   C:/msys64/ucrt64/include/SFML/Config.hpp \
   C:/msys64/ucrt64/include/SFML/Graphics.hpp \
@@ -3029,6 +3030,8 @@ C:/msys64/ucrt64/include/c++/15.2.0/bits/stl_uninitialized.h:
 
 C:/msys64/ucrt64/include/c++/15.2.0/bits/streambuf_iterator.h:
 
+C:/StudentAdventure/include/Projectile.h:
+
 C:/msys64/ucrt64/include/c++/15.2.0/bits/string_view.tcc:
 
 C:/msys64/ucrt64/include/c++/15.2.0/bits/stringfwd.h:
@@ -3252,6 +3255,8 @@ C:/StudentAdventure/include/Enemy.h:
 C:/StudentAdventure/include/Game.h:
 
 C:/StudentAdventure/include/Student.h:
+
+C:/msys64/ucrt64/include/c++/15.2.0/iostream:
 
 C:/StudentAdventure/src/Lecturer.cpp:
 

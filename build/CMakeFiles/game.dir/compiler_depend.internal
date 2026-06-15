@@ -984,14 +984,10 @@ CMakeFiles/game.dir/src/ECTS.cpp.obj
 CMakeFiles/game.dir/src/Game.cpp.obj
  C:/StudentAdventure/src/Game.cpp
  C:/StudentAdventure/include/Character.h
- C:/StudentAdventure/include/Coffee.h
  C:/StudentAdventure/include/Collectible.h
- C:/StudentAdventure/include/ECTS.h
  C:/StudentAdventure/include/Enemy.h
  C:/StudentAdventure/include/Game.h
  C:/StudentAdventure/include/GameObject.h
- C:/StudentAdventure/include/Lecturer.h
- C:/StudentAdventure/include/Platform.h
  C:/StudentAdventure/include/Student.h
  C:/msys64/ucrt64/include/SFML/Config.hpp
  C:/msys64/ucrt64/include/SFML/Graphics.hpp
@@ -1222,6 +1218,7 @@ CMakeFiles/game.dir/src/Game.cpp.obj
  C:/msys64/ucrt64/include/c++/15.2.0/iomanip
  C:/msys64/ucrt64/include/c++/15.2.0/ios
  C:/msys64/ucrt64/include/c++/15.2.0/iosfwd
+ C:/msys64/ucrt64/include/c++/15.2.0/iostream
  C:/msys64/ucrt64/include/c++/15.2.0/istream
  C:/msys64/ucrt64/include/c++/15.2.0/iterator
  C:/msys64/ucrt64/include/c++/15.2.0/limits
@@ -2259,10 +2256,14 @@ CMakeFiles/game.dir/src/Student.cpp.obj
 CMakeFiles/game.dir/src/main.cpp.obj
  C:/StudentAdventure/src/main.cpp
  C:/StudentAdventure/include/Character.h
+ C:/StudentAdventure/include/Coffee.h
  C:/StudentAdventure/include/Collectible.h
- C:/StudentAdventure/include/Enemy.h
+ C:/StudentAdventure/include/ECTS.h
  C:/StudentAdventure/include/Game.h
  C:/StudentAdventure/include/GameObject.h
+ C:/StudentAdventure/include/Lecturer.h
+ C:/StudentAdventure/include/Platform.h
+ C:/StudentAdventure/include/Projectile.h
  C:/StudentAdventure/include/Student.h
  C:/msys64/ucrt64/include/SFML/Config.hpp
  C:/msys64/ucrt64/include/SFML/Graphics.hpp

@@ -1,26 +1,17 @@
 #pragma once
+#include <SFML/Graphics.hpp>
+#include "GameObject.h"
 
-#include "Enemy.h"
-
-class Lecturer : public Enemy
-{
+class Lecturer : public GameObject {
 public:
-
     Lecturer(float x, float y);
-
     void update(float deltaTime) override;
-
     void draw(sf::RenderWindow& window) override;
-
     sf::FloatRect getBounds() const override;
 
-    void attack() override;
-
 private:
-
     sf::RectangleShape body;
-
     sf::CircleShape head;
-
-    float speed = 120.f;
+    bool isShooter;
+    float attackTimer;
 };

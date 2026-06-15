@@ -1,6 +1,5 @@
 CMakeFiles/game.dir/src/Coffee.cpp.obj: \
  C:\StudentAdventure\src\Coffee.cpp C:/StudentAdventure/include/Coffee.h \
- C:/StudentAdventure/include/Collectible.h \
  C:/StudentAdventure/include/GameObject.h \
  C:/msys64/ucrt64/include/SFML/Graphics.hpp \
  C:/msys64/ucrt64/include/SFML/Graphics/BlendMode.hpp \
@@ -307,19 +306,4 @@ CMakeFiles/game.dir/src/Coffee.cpp.obj: \
  C:/msys64/ucrt64/include/SFML/System/FileInputStream.hpp \
  C:/msys64/ucrt64/include/SFML/System/InputStream.hpp \
  C:/msys64/ucrt64/include/SFML/System/MemoryInputStream.hpp \
- C:/msys64/ucrt64/include/SFML/System/Sleep.hpp \
- C:/msys64/ucrt64/include/c++/15.2.0/cmath \
- C:/msys64/ucrt64/include/math.h \
- C:/msys64/ucrt64/include/c++/15.2.0/bits/specfun.h \
- C:/msys64/ucrt64/include/c++/15.2.0/tr1/gamma.tcc \
- C:/msys64/ucrt64/include/c++/15.2.0/tr1/special_function_util.h \
- C:/msys64/ucrt64/include/c++/15.2.0/tr1/bessel_function.tcc \
- C:/msys64/ucrt64/include/c++/15.2.0/tr1/beta_function.tcc \
- C:/msys64/ucrt64/include/c++/15.2.0/tr1/ell_integral.tcc \
- C:/msys64/ucrt64/include/c++/15.2.0/tr1/exp_integral.tcc \
- C:/msys64/ucrt64/include/c++/15.2.0/tr1/hypergeometric.tcc \
- C:/msys64/ucrt64/include/c++/15.2.0/tr1/legendre_function.tcc \
- C:/msys64/ucrt64/include/c++/15.2.0/tr1/modified_bessel_func.tcc \
- C:/msys64/ucrt64/include/c++/15.2.0/tr1/poly_hermite.tcc \
- C:/msys64/ucrt64/include/c++/15.2.0/tr1/poly_laguerre.tcc \
- C:/msys64/ucrt64/include/c++/15.2.0/tr1/riemann_zeta.tcc
+ C:/msys64/ucrt64/include/SFML/System/Sleep.hpp

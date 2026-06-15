@@ -1,30 +1,22 @@
-#include "Platform.h"
+#include "../include/Platform.h"
 
-Platform::Platform(
-    float x,
-    float y,
-    float width,
-    float height)
-{
-    position = {x,y};
-
+// Constructor implementation with 4 parameters
+Platform::Platform(float x, float y, float width, float height) {
+    position = {x, y};
+    shape.setSize({width, height});
+    shape.setFillColor(sf::Color(139, 69, 19)); // Brown color for platform
     shape.setPosition(position);
-
-    shape.setSize({width,height});
-
-    shape.setFillColor(sf::Color(90,60,40));
 }
 
-void Platform::update(float)
-{
+void Platform::update(float deltaTime) {
+    // Platform is static, no update logic required
 }
 
-void Platform::draw(sf::RenderWindow& window)
-{
+void Platform::draw(sf::RenderWindow& window) {
     window.draw(shape);
 }
 
-sf::FloatRect Platform::getBounds() const
-{
+// Returns the global bounding box for collision detection
+sf::FloatRect Platform::getBounds() const {
     return shape.getGlobalBounds();
 }

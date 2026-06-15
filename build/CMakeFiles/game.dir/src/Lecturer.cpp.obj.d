@@ -1,8 +1,6 @@
 CMakeFiles/game.dir/src/Lecturer.cpp.obj: \
  C:\StudentAdventure\src\Lecturer.cpp \
  C:/StudentAdventure/include/Lecturer.h \
- C:/StudentAdventure/include/Enemy.h \
- C:/StudentAdventure/include/Character.h \
  C:/StudentAdventure/include/GameObject.h \
  C:/msys64/ucrt64/include/SFML/Graphics.hpp \
  C:/msys64/ucrt64/include/SFML/Graphics/BlendMode.hpp \
@@ -309,4 +307,5 @@ CMakeFiles/game.dir/src/Lecturer.cpp.obj: \
  C:/msys64/ucrt64/include/SFML/System/FileInputStream.hpp \
  C:/msys64/ucrt64/include/SFML/System/InputStream.hpp \
  C:/msys64/ucrt64/include/SFML/System/MemoryInputStream.hpp \
- C:/msys64/ucrt64/include/SFML/System/Sleep.hpp
+ C:/msys64/ucrt64/include/SFML/System/Sleep.hpp \
+ C:/StudentAdventure/include/Projectile.h

@@ -1,13 +1,14 @@
 #pragma once
+
 #include <SFML/Graphics.hpp>
 #include <memory>
 #include <vector>
 #include "Student.h"
+#include "GameObject.h"
 #include "Platform.h"
 #include "Coffee.h"
+#include "ECTS.h"
 #include "Lecturer.h"
-
-enum class GameState { Menu, Playing, Paused };
 
 class Game {
 public:
@@ -19,20 +20,13 @@ private:
     void update(float deltaTime);
     void render();
     void handleCollisions();
-
-    GameState currentState;
+    void spawnChunk(float startX);
 
     sf::RenderWindow window;
-    sf::Clock clock;
-    sf::Font font;
-
-    std::unique_ptr<sf::Text> scoreText;
-    std::unique_ptr<sf::Text> gameOverText;
-    std::unique_ptr<sf::Text> menuText;
-    std::unique_ptr<sf::Text> pauseText;
-
     std::unique_ptr<Student> player;
-    std::vector<std::unique_ptr<Platform>> platforms;
-    std::vector<std::unique_ptr<Coffee>> coffees;
-    std::vector<std::unique_ptr<Lecturer>> lecturers;
+    std::vector<std::unique_ptr<GameObject>> gameObjects;
+
+    int score;
+    float distanceTraveled;
+    bool isPaused;
 };

@@ -1,123 +1,75 @@
 #include "../include/Game.h"
 #include <iostream>
-#include <optional>
 
-Game::Game() 
-    : window(sf::VideoMode({800, 600}), "Student Adventure")
-{
-    currentState = GameState::Menu;
-    window.setFramerateLimit(60);
-
-    if (!font.openFromFile("arial.ttf")) {
-        std::cerr << "Error loading font!" << std::endl;
-    }
-
-    scoreText = std::make_unique<sf::Text>(font, "ECTS: 0  Stress: 0", 24);
-    scoreText->setFillColor(sf::Color::White);
-    scoreText->setPosition({10.f, 10.f});
-
-    gameOverText = std::make_unique<sf::Text>(font, "ZLAPANY! Nacisnij R aby zrestartowac", 30);
-    gameOverText->setFillColor(sf::Color::Red);
-    gameOverText->setPosition({120.f, 250.f});
-
-    menuText = std::make_unique<sf::Text>(font, "Nacisnij ENTER aby zaczac", 40);
-    menuText->setFillColor(sf::Color::Yellow);
-    menuText->setPosition({180.f, 250.f});
-
-    pauseText = std::make_unique<sf::Text>(font, "PAUZA", 50);
-    pauseText->setFillColor(sf::Color::White);
-    pauseText->setPosition({320.f, 250.f});
-
+Game::Game() : window(sf::VideoMode({800, 600}), "Academic Survival") {
     player = std::make_unique<Student>();
-    player->reset(); // WYMUSZAMY RESET GRACZA NA STARCIE
-
-    platforms.push_back(std::make_unique<Platform>(100.f, 500.f, 600.f, 20.f));
-    coffees.push_back(std::make_unique<Coffee>(300.f, 450.f));
-    lecturers.push_back(std::make_unique<Lecturer>(600.f, 400.f)); 
+    // Startowa platforma
+    gameObjects.push_back(std::make_unique<Platform>(200.f, 500.f, 400.f, 20.f));
 }
 
 void Game::run() {
+    sf::Clock clock;
     while (window.isOpen()) {
-        processEvents();
-        update(clock.restart().asSeconds());
+        float deltaTime = clock.restart().asSeconds();
+        
+        handleInput();
+        update(deltaTime);
         render();
     }
 }
 
-void Game::processEvents() {
-    while (const std::optional event = window.pollEvent()) {
-        if (event->is<sf::Event::Closed>()) window.close();
+void Game::handleInput() {
+    sf::Event event;
+    while (window.pollEvent(event)) {
+        if (event.type == sf::Event::Closed) window.close();
+    }
 
-        if (const auto* keyPressed = event->getIf<sf::Event::KeyPressed>()) {
-            if (keyPressed->scancode == sf::Keyboard::Scan::Escape) {
-                if (currentState == GameState::Playing) currentState = GameState::Paused;
-                else if (currentState == GameState::Paused) currentState = GameState::Playing;
-            }
-            if (keyPressed->scancode == sf::Keyboard::Scan::Enter) {
-                if (currentState == GameState::Menu) {
-                    player->reset();
-                    currentState = GameState::Playing;
-                }
-            }
-        }
+    // Sterowanie w czasie rzeczywistym
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left)) {
+        player->move({-300.f * 0.016f, 0.f}); // Upewnij się, że masz metodę move w Student
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right)) {
+        player->move({300.f * 0.016f, 0.f});
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space)) {
+        player->jump();
     }
 }
 
 void Game::update(float deltaTime) {
-    if (currentState != GameState::Playing) return;
-
-    if (!player->isAlive()) {
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::R)) {
-            player->reset();
-        }
-        return; 
-    }
-
     player->update(deltaTime);
-    for (auto& lecturer : lecturers) lecturer->update(deltaTime);
-    handleCollisions();
-
-    scoreText->setString("ECTS: " + std::to_string(player->getECTS()) + "  Stress: " + std::to_string(player->getStress()));
-}
-
-void Game::handleCollisions() {
-    for (auto it = coffees.begin(); it != coffees.end();) {
-        if (player->getBounds().findIntersection((*it)->getBounds()).has_value()) {
-            player->activateCoffeeBoost();
-            it = coffees.erase(it);
-        } else { ++it; }
-    }
-
-    for (auto& lecturer : lecturers) {
-        if (player->getBounds().findIntersection(lecturer->getBounds()).has_value()) {
-            if (!player->getIsCrouching()) {
-                player->die();
+    
+    // Prosta logika kolizji: Jeśli postać dotyka platformy -> zatrzymaj
+    bool onGround = false;
+    for (auto& obj : gameObjects) {
+        if (player->getBounds().intersects(obj->getBounds())) {
+            // "Wypchnięcie" na górę platformy, jeśli postać spada
+            if (player->getVelocityY() > 0) {
+                player->setPosition({player->getPosition().x, obj->getBounds().top - 30.f});
+                player->setGrounded(true);
+                onGround = true;
             }
         }
     }
+    if (!onGround) player->setGrounded(false);
+
+    // Generowanie nowych platform (nieskończony bieg)
+    if (player->getPosition().x > lastPlatformX - 400.f) {
+        spawnChunk(lastPlatformX + 400.f);
+    }
+}
+
+void Game::spawnChunk(float startX) {
+    lastPlatformX = startX;
+    // Platforma
+    gameObjects.push_back(std::make_unique<Platform>(startX, 450.f, 200.f, 20.f));
+    // Wykładowca na platformie
+    gameObjects.push_back(std::make_unique<Lecturer>(startX + 100.f, 450.f));
 }
 
 void Game::render() {
-    window.clear(sf::Color(30, 30, 30));
-
-    if (currentState == GameState::Menu) {
-        window.draw(*menuText);
-    } else {
-        for (auto& platform : platforms) platform->draw(window);
-        for (auto& coffee : coffees) coffee->draw(window);
-        for (auto& lecturer : lecturers) lecturer->draw(window);
-        player->draw(window);
-        window.draw(*scoreText);
-
-        if (currentState == GameState::Paused) {
-            window.draw(*pauseText);
-        }
-        
-        // Wyświetl "Złapany" TYLKO jeśli jesteśmy w grze I gracz naprawdę nie żyje
-        if (currentState == GameState::Playing && !player->isAlive()) {
-            window.draw(*gameOverText);
-        }
-    }
-
+    window.clear();
+    for (auto& obj : gameObjects) obj->draw(window);
+    player->draw(window);
     window.display();
 }
