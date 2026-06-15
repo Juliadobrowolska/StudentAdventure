@@ -1,32 +1,39 @@
-#include "Game.h"
+#include "../include/Game.h"
 #include <iostream>
 #include <optional>
 
 Game::Game() 
-    : window(sf::VideoMode({800, 600}), "Student Adventure"),
-      scoreText(font, "", 24)
+    : window(sf::VideoMode({800, 600}), "Student Adventure")
 {
+    currentState = GameState::Menu;
     window.setFramerateLimit(60);
 
-    // Ładowanie czcionki przed przekazaniem do obiektu sf::Text (wymóg SFML 3)
     if (!font.openFromFile("arial.ttf")) {
         std::cerr << "Error loading font!" << std::endl;
     }
 
-    // Konfiguracja tekstu po załadowaniu czcionki
-    scoreText.setFont(font);
-    scoreText.setString("Score: 0");
-    scoreText.setCharacterSize(24);
-    scoreText.setFillColor(sf::Color::White);
-    scoreText.setPosition({10.f, 10.f});
+    scoreText = std::make_unique<sf::Text>(font, "ECTS: 0  Stress: 0", 24);
+    scoreText->setFillColor(sf::Color::White);
+    scoreText->setPosition({10.f, 10.f});
 
-    // Inicjalizacja obiektu gracza i elementów gry
+    gameOverText = std::make_unique<sf::Text>(font, "ZLAPANY! Nacisnij R aby zrestartowac", 30);
+    gameOverText->setFillColor(sf::Color::Red);
+    gameOverText->setPosition({120.f, 250.f});
+
+    menuText = std::make_unique<sf::Text>(font, "Nacisnij ENTER aby zaczac", 40);
+    menuText->setFillColor(sf::Color::Yellow);
+    menuText->setPosition({180.f, 250.f});
+
+    pauseText = std::make_unique<sf::Text>(font, "PAUZA", 50);
+    pauseText->setFillColor(sf::Color::White);
+    pauseText->setPosition({320.f, 250.f});
+
     player = std::make_unique<Student>();
+    player->reset(); // WYMUSZAMY RESET GRACZA NA STARCIE
 
-    // Dodanie przykładowych obiektów (platformy, przedmioty, przeciwnicy)
     platforms.push_back(std::make_unique<Platform>(100.f, 500.f, 600.f, 20.f));
     coffees.push_back(std::make_unique<Coffee>(300.f, 450.f));
-    lecturers.push_back(std::make_unique<Lecturer>(400.f, 400.f));
+    lecturers.push_back(std::make_unique<Lecturer>(600.f, 400.f)); 
 }
 
 void Game::run() {
@@ -39,50 +46,53 @@ void Game::run() {
 
 void Game::processEvents() {
     while (const std::optional event = window.pollEvent()) {
-        if (event->is<sf::Event::Closed>()) {
-            window.close();
+        if (event->is<sf::Event::Closed>()) window.close();
+
+        if (const auto* keyPressed = event->getIf<sf::Event::KeyPressed>()) {
+            if (keyPressed->scancode == sf::Keyboard::Scan::Escape) {
+                if (currentState == GameState::Playing) currentState = GameState::Paused;
+                else if (currentState == GameState::Paused) currentState = GameState::Playing;
+            }
+            if (keyPressed->scancode == sf::Keyboard::Scan::Enter) {
+                if (currentState == GameState::Menu) {
+                    player->reset();
+                    currentState = GameState::Playing;
+                }
+            }
         }
     }
 }
 
 void Game::update(float deltaTime) {
-    player->update(deltaTime);
+    if (currentState != GameState::Playing) return;
 
-    for (auto& lecturer : lecturers) {
-        lecturer->update(deltaTime);
+    if (!player->isAlive()) {
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::R)) {
+            player->reset();
+        }
+        return; 
     }
 
+    player->update(deltaTime);
+    for (auto& lecturer : lecturers) lecturer->update(deltaTime);
     handleCollisions();
 
-    // Aktualizacja licznika punktów
-    scoreText.setString(
-        "ECTS: " + std::to_string(player->getECTS())
-        + "  Stress: " + std::to_string(player->getStress())
-    );
+    scoreText->setString("ECTS: " + std::to_string(player->getECTS()) + "  Stress: " + std::to_string(player->getStress()));
 }
 
 void Game::handleCollisions() {
-    // Obsługa kolizji z platformami (standard SFML 3: findIntersection)
-    for (auto& platform : platforms) {
-        if (player->getBounds().findIntersection(platform->getBounds()).has_value()) {
-            // Platform collision handling can be added here if needed.
-        }
-    }
-
-    // Obsługa kolizji z przedmiotami (kawa)
     for (auto it = coffees.begin(); it != coffees.end();) {
         if (player->getBounds().findIntersection((*it)->getBounds()).has_value()) {
             player->activateCoffeeBoost();
             it = coffees.erase(it);
-        } else {
-            ++it;
-        }
+        } else { ++it; }
     }
 
-    // Obsługa kolizji z wykładowcami
     for (auto& lecturer : lecturers) {
         if (player->getBounds().findIntersection(lecturer->getBounds()).has_value()) {
-            // Miejsce na implementację logiki przegranej lub resetu poziomu
+            if (!player->getIsCrouching()) {
+                player->die();
+            }
         }
     }
 }
@@ -90,20 +100,24 @@ void Game::handleCollisions() {
 void Game::render() {
     window.clear(sf::Color(30, 30, 30));
 
-    for (auto& platform : platforms) {
-        platform->draw(window);
-    }
+    if (currentState == GameState::Menu) {
+        window.draw(*menuText);
+    } else {
+        for (auto& platform : platforms) platform->draw(window);
+        for (auto& coffee : coffees) coffee->draw(window);
+        for (auto& lecturer : lecturers) lecturer->draw(window);
+        player->draw(window);
+        window.draw(*scoreText);
 
-    for (auto& coffee : coffees) {
-        coffee->draw(window);
+        if (currentState == GameState::Paused) {
+            window.draw(*pauseText);
+        }
+        
+        // Wyświetl "Złapany" TYLKO jeśli jesteśmy w grze I gracz naprawdę nie żyje
+        if (currentState == GameState::Playing && !player->isAlive()) {
+            window.draw(*gameOverText);
+        }
     }
-
-    for (auto& lecturer : lecturers) {
-        lecturer->draw(window);
-    }
-
-    player->draw(window);
-    window.draw(scoreText);
 
     window.display();
 }
